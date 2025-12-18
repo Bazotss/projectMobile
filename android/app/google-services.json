@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "525999248096",
+    "project_id": "tugas9mobile-4f643",
+    "storage_bucket": "tugas9mobile-4f643.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:525999248096:android:2087a76b1be858f867f685",
+        "android_client_info": {
+          "package_name": "com.example.aplikasihsnews"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTAlKXqyuCbp9duv8fKMov4LxK1bMJlFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:525999248096:android:9a43670e1b2d63ce67f685",
+        "android_client_info": {
+          "package_name": "com.example.tugas9mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTAlKXqyuCbp9duv8fKMov4LxK1bMJlFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
