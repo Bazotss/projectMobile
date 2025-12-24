@@ -121,6 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
               }
 
               final article = _articles[index];
+              print("IMAGE URL => ${article['image']}");
 
               return GestureDetector(
                 onTap: () {
@@ -193,7 +194,8 @@ class NewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final imageUrl = fixImageUrl(article['image']);
+      final rawImage = article['image'];
+      final imageUrl = rawImage == null ? '' : fixImageUrl(rawImage);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -204,16 +206,19 @@ class NewsCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
             child: imageUrl.isNotEmpty
-                ? Image.network(
-                    imageUrl,
-                    height: big ? 200 : 120,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                    errorBuilder: (_, __, ___) {
-                      return _imageFallback(big);
-                    },
-                  )
-                : _imageFallback(big),
+    ? Image.network(
+        imageUrl,
+        height: big ? 200 : 120,
+        width: double.infinity,
+        fit: BoxFit.cover,
+        headers: const {
+          "User-Agent":
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120",
+        },
+        errorBuilder: (_, __, ___) => _imageFallback(big),
+      )
+    : _imageFallback(big),
+
           ),
 
           const SizedBox(height: 8),
@@ -242,10 +247,14 @@ class NewsCard extends StatelessWidget {
   }
 
   Widget _imageFallback(bool big) {
-    return Container(
-      height: big ? 200 : 120,
+  return Container(
+    height: big ? 200 : 120,
+    decoration: BoxDecoration(
       color: Colors.grey.shade300,
-      child: const Icon(Icons.image_not_supported, size: 40),
-    );
-  }
+      borderRadius: BorderRadius.circular(12),
+    ),
+    child: const Icon(Icons.image_not_supported, size: 40),
+  );
+}
+
 }
